@@ -1,0 +1,12 @@
+version: v1
+plugins:
+  - plugin: go
+    out: api
+    opt: paths=source_relative
+  - plugin: connect-go
+    out: api
+    opt: paths=source_relative
+  - plugin: connect-openapi
+    out: api/docs
+    opt:
+      - base=api/docs/yorkie.base.yaml

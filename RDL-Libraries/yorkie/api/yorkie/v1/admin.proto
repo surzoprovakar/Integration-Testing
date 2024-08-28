@@ -1,0 +1,196 @@
+/*
+ * Copyright 2022 The Yorkie Authors. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+syntax = "proto3";
+
+package yorkie.v1;
+
+import "yorkie/v1/resources.proto";
+
+option go_package = "github.com/yorkie-team/yorkie/api/yorkie/v1;v1";
+
+option java_multiple_files = true;
+option java_package = "dev.yorkie.api.v1";
+
+// Admin is a service that provides a API for Admin.
+service AdminService {
+  rpc SignUp(SignUpRequest) returns (SignUpResponse) {}
+  rpc LogIn(LogInRequest) returns (LogInResponse) {}
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {}
+
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
+  rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {}
+  rpc GetProject(GetProjectRequest) returns (GetProjectResponse) {}
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {}
+
+  rpc ListDocuments (ListDocumentsRequest) returns (ListDocumentsResponse) {}
+  rpc GetDocument (GetDocumentRequest) returns (GetDocumentResponse) {}
+  rpc GetDocuments (GetDocumentsRequest) returns (GetDocumentsResponse) {}
+  rpc RemoveDocumentByAdmin (RemoveDocumentByAdminRequest) returns (RemoveDocumentByAdminResponse) {}
+  rpc GetSnapshotMeta (GetSnapshotMetaRequest) returns (GetSnapshotMetaResponse) {}
+  rpc SearchDocuments (SearchDocumentsRequest) returns (SearchDocumentsResponse) {}
+
+  rpc ListChanges (ListChangesRequest) returns (ListChangesResponse) {}
+
+  rpc GetServerVersion (GetServerVersionRequest) returns (GetServerVersionResponse) {}
+}
+
+message SignUpRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message SignUpResponse {
+  User user = 1;
+}
+
+message LogInRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LogInResponse {
+  string token = 1;
+}
+
+message DeleteAccountRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message DeleteAccountResponse {
+}
+
+message ChangePasswordRequest {
+  string username = 1;
+  string current_password = 2;
+  string new_password = 3;
+}
+
+message ChangePasswordResponse {
+}
+
+message CreateProjectRequest {
+  string name = 1;
+}
+
+message CreateProjectResponse {
+  Project project = 1;
+}
+
+message GetProjectRequest {
+  string name = 1;
+}
+
+message GetProjectResponse {
+  Project project = 1;
+}
+
+message ListProjectsRequest {}
+
+message ListProjectsResponse {
+  repeated Project projects = 1;
+}
+
+message UpdateProjectRequest {
+  string id = 1;
+  UpdatableProjectFields fields = 2;
+}
+
+message UpdateProjectResponse {
+  Project project = 1;
+}
+
+message ListDocumentsRequest {
+  string project_name = 1;
+  string previous_id = 2;
+  int32 page_size = 3;
+  bool is_forward = 4;
+  bool include_snapshot = 5;
+}
+
+message ListDocumentsResponse {
+  repeated DocumentSummary documents = 1;
+}
+
+message GetDocumentRequest {
+  string project_name = 1;
+  string document_key = 2;
+}
+
+message GetDocumentResponse {
+  DocumentSummary document = 1;
+}
+
+message GetDocumentsRequest {
+  string project_name = 1;
+  repeated string document_keys = 2;
+  bool include_snapshot = 3;
+}
+
+message GetDocumentsResponse {
+  repeated DocumentSummary documents = 1;
+}
+
+message RemoveDocumentByAdminRequest {
+  string project_name = 1;
+  string document_key = 2;
+  bool force = 3;
+}
+
+message RemoveDocumentByAdminResponse {}
+
+message GetSnapshotMetaRequest {
+  string project_name = 1;
+  string document_key = 2;
+  int64 server_seq = 3  [jstype = JS_STRING];
+}
+
+message GetSnapshotMetaResponse {
+  bytes snapshot = 1;
+  int64 lamport = 2  [jstype = JS_STRING];
+}
+
+message SearchDocumentsRequest {
+  string project_name = 1;
+  string query = 2;
+  int32  page_size = 3; 
+}
+
+message SearchDocumentsResponse {
+  int32 total_count = 1;
+  repeated DocumentSummary documents = 2;
+}
+
+message ListChangesRequest {
+  string project_name = 1;
+  string document_key = 2;
+  int64 previous_seq = 3  [jstype = JS_STRING];
+  int32  page_size = 4; 
+  bool   is_forward = 5;
+}
+
+message ListChangesResponse {
+  repeated Change changes = 1;
+}
+
+message GetServerVersionRequest {}
+
+message GetServerVersionResponse {
+  string yorkie_version = 1;
+  string go_version = 2;
+  string build_date = 3;
+}

@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ .Values.yorkie.name }}-gateway
+  namespace: {{ .Values.yorkie.namespace }}
+spec:
+  selector:
+    istio: yorkie-gateway
+  servers:
+    - port:
+        number: 80
+        name: yorkie-rpc-http
+        # can simply add envoy.grpc_web filter by using grpc-web appProtocol
+        # https://github.com/istio/istio/pull/20537
+        protocol: grpc-web
+      hosts:
+        - "*"

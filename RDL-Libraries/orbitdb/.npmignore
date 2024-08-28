@@ -1,0 +1,19 @@
+# Make sure to exclude test data directory
+orbitdb/
+
+# Don't distribute the dependencies
+node_modules/
+
+# Don't distribute source maps
+dist/*.map
+
+# Don't distribute the debug build
+dist/orbitdb.js
+
+.git
+benchmarks
+test
+conf
+Makefile
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md

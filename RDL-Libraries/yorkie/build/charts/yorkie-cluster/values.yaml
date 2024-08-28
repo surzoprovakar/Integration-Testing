@@ -1,0 +1,69 @@
+# Configuration for Yorkie cluster
+yorkie:
+  name: yorkie
+  namespace: yorkie
+
+  autoscaling:
+    enabled: false
+    replicaCount: 3
+
+  image:
+    repository: yorkieteam/yorkie
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  args:
+    dbConnectionUri: mongodb://mongodb.mongodb.svc.cluster.local:27017/yorkie-meta
+
+  ports:
+    rpcPort: 8080
+    profilingPort: 8081
+
+  resources: {}
+
+# Configuration for istio ingress gateway
+ingressGateway:
+  consistentHash:
+    hashParameter: "x-shard-key"
+
+    # Choose one of two hash based load balancing algorithms below
+    # only one algorithm should be enalbed
+    maglev:
+      enabled: true
+      tableSize: 65537
+
+    ringHash:
+      enabled: false
+      minimumRingSize: 1024
+
+  # Connection idle timeout for WatchDocument API
+  httpConnection:
+    streamIdleTimeout: 60s
+
+  resources: {}
+
+# Configuration for ingress (eg: AWS ALB)
+ingress:
+  ingressClassName: nginx
+  ## Set to alb if you are using AWS, NCP ALB
+  # ingressClassName: alb
+
+  hosts:
+    enabled: false
+    apiHost: api.yorkie.dev
+
+  awsAlb:
+    enabled: false
+    certArn: arn:aws:acm:ap-northeast-2:123412341234:certificate/1234-1234-1234-1234-1234
+
+  ncpAlb:
+    enabled: false
+    certNo: 1234
+
+# Configuration for ratelimit
+ratelimit:
+  enabled: false
+  name: ratelimit
+  unit: minute
+  requestsPerUnit: 10000
+  domain: yorkie-ratelimit

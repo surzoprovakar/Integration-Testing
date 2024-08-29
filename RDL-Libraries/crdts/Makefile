@@ -3,7 +3,7 @@ build:
 
 datalog:
 	g++ -o datalog Datalog/DatalogGen.cpp
-	./datalog 6 > ils.dl
+	./datalog 18 > ils.dl
 	souffle ils.dl
 
 ils:

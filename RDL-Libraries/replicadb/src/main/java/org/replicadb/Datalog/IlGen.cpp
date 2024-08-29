@@ -61,7 +61,7 @@ string replaceNumbers(const string &line, const unordered_map<int, string> &even
 
 int main()
 {
-    string eventsFile = "InitRun/events.facts";
+    string eventsFile = "Datalog/events.facts";
     string csvFile = "cr.csv";
 
     // Step 1: Map events to serial numbers

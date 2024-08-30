@@ -1,4 +1,6 @@
-ER-PI to test interleaving with exhaustive replay for RDL integration
+ER-π to test interleaving with exhaustive replay for RDL integration
+
+![ER-π's Languages](ScnSts/languages.png)
 
 Demo test: 
 - from a CLI, command *redis-server*

@@ -25,4 +25,4 @@ clean:
 	@rm -rf server_proxy datalog interleave ils.dl *.csv 
 	@rm -rf Library/Actions.txt *.sum *.rdb interleavings/ 
 	@rm -rf Library/pncounter_proxy.go Library/ast_rewrite Library/server_proxy.go
-	# @rm -rf InitRun/
+	@rm -rf InitRun/

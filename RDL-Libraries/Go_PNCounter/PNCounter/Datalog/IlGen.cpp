@@ -60,7 +60,7 @@ string replaceNumbers(const string &line, const unordered_map<int, string> &even
 
 int main()
 {
-    string eventsFile = "InitRun/events.facts";
+    string eventsFile = "FirstRun/Actions.txt";
     string csvFile = "cr.csv";
 
     unordered_map<int, string> eventMap = mapEvents(eventsFile);

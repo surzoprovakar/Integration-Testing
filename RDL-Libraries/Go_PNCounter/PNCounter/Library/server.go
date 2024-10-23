@@ -56,6 +56,10 @@ func do_actions(actions []string, mutexKey string, attributeKey string, client *
 	//sleep for 5 secs, so other replicase
 	//have time to get started
 	time.Sleep(5 * time.Second)
+
+	// measuring time required to execute a single interleaving
+	start := time.Now()
+
 	fmt.Println("Starting to do_actions")
 	for _, action := range actions {
 		opt_info := strings.Split(action, "_")
@@ -128,6 +132,8 @@ func do_actions(actions []string, mutexKey string, attributeKey string, client *
 			}
 		}
 	}
+	elapsed := time.Since(start)
+	fmt.Println("time required: ", elapsed.Seconds())
 }
 
 func main() {
@@ -221,6 +227,7 @@ func main() {
 			fmt.Println("#### Start Interleaving: ", intls_count, " ####")
 			actions := ReadFile("../interleavings/ils_" + strconv.Itoa(intls_count) + ".txt")
 			go do_actions(actions, mutexKey, attributeKey, client)
+
 			time.Sleep(30 * time.Second)
 			// t := new(testing.T)
 			// TestFinalValue(t, counter.value)

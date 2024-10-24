@@ -9,7 +9,7 @@ import java.util.Set;
 public class DFS {
     public static void main(String[] args) {
         List<String> events = readEventsFromFile("InitRun/events.facts");
-        dfs(new ArrayList<>(), events, new HashSet<>());
+        dfs(new ArrayList<String>(), events, new HashSet<String>());
     }
 
     public static void dfs(List<String> path, List<String> remainingEvents, Set<String> visitedPaths) {

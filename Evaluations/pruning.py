@@ -8,17 +8,17 @@ ind = [26,35,19,20,16,29,22,38,35,20,20,21]
 failed = [20,15,29,15,25,30,20,17,25,20,22,15]
 
 # Colors and hatch patterns
-edgecolors = ['blue', 'orangered', 'green', 'purple']
-hatch_patterns = ['xx', '////', '**', '\\\\\\']
+edgecolors = ['steelblue', 'indigo', 'darkolivegreen', 'indianred']
+hatch_patterns = ['....', '////', '**', '\|\|']
 
-fig, ax = plt.subplots(figsize=(6, 5))  # Set figure size to 6 by 10 inches
+fig, ax = plt.subplots(figsize=(6, 4)) 
 
 # Bar widths and positions
-bar_width = 0.4
+bar_width = 0.3
 y_pos = range(len(bugs))
 
 # Adjusting y positions to decrease gap
-y_pos = [i * 0.6 for i in y_pos]
+y_pos = [i * 0.45 for i in y_pos]
 
 # Plot each segment of the bars
 grouping_bar = ax.barh(y_pos, grouping, edgecolor=edgecolors[0], fill=False, hatch=hatch_patterns[0], height=bar_width, label='Grouping')
@@ -36,11 +36,18 @@ ax.set_xticks([0, 25, 50, 75, 100])
 ax.set_xticklabels(['0%', '25%', '50%', '75%', '100%'], fontsize=10)  # Set fontsize
 
 
-fig.set_size_inches(6, 5)
+# fig.set_size_inches(6, 5)
 
 # Add legends
-legend1 = ax.legend([grouping_bar, replica_bar], ['Event-Grouping', 'Replica-Specific'], loc='upper center', bbox_to_anchor=(0.5, 1.1), ncol=2)
-legend2 = ax.legend([ind_bar, failed_bar], ['Event-Independence', 'Failed-Ops'], loc='lower center', bbox_to_anchor=(0.5, -0.15), ncol=2)
+legend1 = ax.legend([grouping_bar, replica_bar], 
+                    ['Event-Grouping', 'Replica-Specific'], 
+                    loc='upper center', bbox_to_anchor=(0.5, 1.11), ncol=2, 
+                    fancybox=True, handlelength=4, edgecolor='dimgray')
+
+legend2 = ax.legend([ind_bar, failed_bar], 
+                    ['Event-Independence', 'Failed-Ops'], 
+                    loc='lower center', bbox_to_anchor=(0.5, -0.17), ncol=2,
+                    fancybox=True, handlelength=4, edgecolor='dimgray')
 
 # Add the legends manually to the axes
 ax.add_artist(legend1)

@@ -4,7 +4,7 @@ from matplotlib.lines import Line2D
 from matplotlib.ticker import FuncFormatter
 
 # Data from the table
-attempts = [1, 2, 3, 4, 5]
+attempts = ["I", "II", "III", "IV", "V"]
 tool = [8034, 8034, 8034, 8034, 8034]
 dfs = [18922, 17634, 16954, 15964, 19025]
 rand = [17879, 16125, 15964, 18569, 17234]
@@ -46,7 +46,7 @@ yticks = np.arange(7500, 21000, 2500)
 ax.set_yticks(yticks)
 
 # Adding labels and title
-ax.set_xlabel('Attempt #')
+ax.set_xlabel('Experimental Run #')
 ax.set_ylabel('Interleavings #($log_{10}$)')
 ax.set_xticks(attempts)  # Set x-ticks to show each attempt
 

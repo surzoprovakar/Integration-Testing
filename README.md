@@ -32,6 +32,16 @@ Integration testing across replicated systems can miss critical bugs if interlea
 
 This project strikes a balance by leveraging **domain-specific knowledge** to **optimize** the exploration of behaviors that are most likely to uncover real-world bugs.
 
+## Publication
+
+This work was published in:
+
+> **ER-𝜋: Exhaustive Interleaving Replay for Testing Replicated Data Library**  
+> Provakar Mondal, Eli Tilevich  
+> *26th ACM/IFIP International Middleware Conference 2025*.
+
+📄 [Full paper available here](https://people.cs.vt.edu/provakar/Middleware_25__ER_%f0%9d%9c%8b_.pdf).
+
 ## Getting Started
 
 1. Clone the repository:

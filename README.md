@@ -36,14 +36,15 @@ This project strikes a balance by leveraging **domain-specific knowledge** to **
 
 1. Clone the repository:
    ```bash
-   - git clone https://github.com/surzoprovakar/Integration-Testing.git
-   - cd Integration-Testing
+   git clone https://github.com/surzoprovakar/Integration-Testing.git
+   cd Integration-Testing
 
-2. Run: 
-- Command *redis-server* from a CLI.
-- Navigate from another CLI to the library directory where the Makefile is located.
-- command *make all*.
-- Example_Go: open two CLIs inside **Library** directory and command *./r1.sh* and *./r2.sh*.
-- Example_Java: *gradle test*.
-- Example_JS: *npm test*.
-- *make clean*.
+2. Run:
+   ```bash
+   Command *redis-server* from a CLI.
+   Navigate from another CLI to the library directory where the Makefile is located.
+   command *make all*.
+   Example_Go: open two CLIs inside **Library** directory and command *./r1.sh* and *./r2.sh*.
+   Example_Java: *gradle test*.
+   Example_JS: *npm test*.
+   *make clean*.

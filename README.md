@@ -1,8 +1,6 @@
-ER-π to test interleaving with exhaustive replay for RDL integration
+ER-π for integration testing with exhaustive replay of interleavings to verify App-RDL integration.
 
-![ER-π's Languages](ScnSts/languages.png)
-
-Demo test: 
+How to Run: 
 - Command *redis-server* from a CLI.
 - Navigate from another CLI to the library directory where the Makefile is located.
 - command *make all*.

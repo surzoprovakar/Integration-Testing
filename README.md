@@ -1,4 +1,4 @@
-# 🧪 ER-π: Exhaustive Integration Testing for Replicated Data Libraries Integration
+# 🧪 ER-π:  Exhaustive Interleaving Replay for Testing Replicated Data Library Integration
 
 This project introduces a comprehensive integration testing framework designed to **improve the reliability and correctness of replicated data libraries** by exploring **optimized interleaving** of interactions between application logic and library behavior.
 
